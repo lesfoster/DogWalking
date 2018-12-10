@@ -1,0 +1,17 @@
+JDBC_DRIVER			sun.jdbc.odbc.JdbcOdbcDriver
+		
+DRIVERURL_PREFIX		jdbc:odbc:
+	
+HOST				
+	
+DBNAME				AnimalsDB
+	
+DB_DELIMITER			
+
+USERNAME			
+	
+PASSWORD			
+	
+INITIAL_CONNECTIONS	1
+
+MAX_CONNECTIONS		2

@@ -1,0 +1,18 @@
+JDBC_DRIVER			org.gjt.mm.mysql.Driver
+		
+DRIVERURL_PREFIX		jdbc:mysql://
+	
+HOST				localhost
+
+DB_DELIMITER			/
+	
+DBNAME				dogs
+	
+USERNAME			root
+	
+PASSWORD			boogedy
+	
+INITIAL_CONNECTIONS		2
+
+MAX_CONNECTIONS			4
+
