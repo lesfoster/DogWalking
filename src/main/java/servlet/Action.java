@@ -6,42 +6,32 @@
  */
 package servlet;
 
+import db.DBAccess;
+import db.ExecuteResults;
+import db.InsertConfig;
 import html.TimeElement;
-
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.sql.Connection;
-import java.sql.DatabaseMetaData;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Enumeration;
-import java.util.Hashtable;
-import java.util.Vector;
+import main.Dog;
+import main.Dogs;
+import main.DogsDBproc;
+import main.Walk;
+import sort.Sort;
+import time.CalCustom;
+import time.TimeLength;
+import util.RefreshDogsDBandLocalThread;
+import util.StringProc;
+import util.Util;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import db.DBAccess;
-import db.ExecuteResults;
-import db.InsertConfig;
-import db.UpdateConfig;
-
-import sort.Sort;
-import time.CalCustom;
-import time.Duration;
-import time.TimeLength;
-import util.RefreshDogsDBandLocalThread;
-import util.StringProc;
-import util.Util;
-
-import main.Dog;
-import main.Dogs;
-import main.DogsDBproc;
-import main.Walk;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.sql.*;
+import java.util.Enumeration;
+import java.util.Hashtable;
+import java.util.Vector;
 
 /**
  * @author whitteng
@@ -51,6 +41,7 @@ import main.Walk;
  */
 public class Action extends ServletCore
 {
+    public static final String TARGET_JSP = "jsp/Dogs.jsp";
     static public Dogs dogs = null;
     
     boolean synchDataFlag = false;
@@ -215,7 +206,7 @@ public class Action extends ServletCore
             
             if (dog.isOut())
             {
-            	transferToJSP("Dogs.jsp", req, res);
+            	transferToJSP(TARGET_JSP, req, res);
             	return (null);
             }
             
@@ -255,7 +246,7 @@ public class Action extends ServletCore
             
             if (!dog.isOut())
             {  
-            	transferToJSP("Dogs.jsp", req, res);
+            	transferToJSP(TARGET_JSP, req, res);
             	return (null);
             }
             
@@ -294,7 +285,7 @@ public class Action extends ServletCore
         }
     }
       
-    transferToJSP("Dogs.jsp", req, res);
+    transferToJSP(TARGET_JSP, req, res);
     
     //updateDogsDBwithArkDB.applyArkDBtoDogsDB();
     
@@ -495,7 +486,7 @@ public class Action extends ServletCore
 	   
 	   dogs.sort();
 	
-	   transferToJSP("Dogs.jsp", req, res);
+	   transferToJSP(TARGET_JSP, req, res);
 	    
 	   return (null);
 	}
@@ -671,7 +662,7 @@ public class Action extends ServletCore
    
    dogs.sort();
    
-   transferToJSP("Dogs.jsp", req, res);
+   transferToJSP(TARGET_JSP, req, res);
    
    dogsDBproc.updateDogDynamic(dogID, dog.getNotes());
    

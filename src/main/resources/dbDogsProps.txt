@@ -8,9 +8,9 @@ DB_DELIMITER			/
 	
 DBNAME				dogs
 	
-USERNAME			root
+USERNAME			dogs
 	
-PASSWORD			boogedy
+PASSWORD			Balm3r_
 	
 INITIAL_CONNECTIONS		2
 

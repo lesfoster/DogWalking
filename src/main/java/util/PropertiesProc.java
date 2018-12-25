@@ -1,64 +1,82 @@
 package util;
 
+import java.io.IOException;
 import java.util.*;
 
 public class PropertiesProc
 {
 	Properties props = null;
-	
+
 	String propertiesFileName = null;
-	
-  public PropertiesProc ()
-  {
-      
-  }
-	
-  /**
-   * 
-   * @param propertiesFileName - relative to WebFileRoot
-   */
-  public PropertiesProc (String propertiesFileName)
-  {
-      this.propertiesFileName = propertiesFileName;
-  }
-  
-/**
- * 
- * @param key - name of property key
- * @return String - property value
- */	
-  public String readProperty
-  	(String key) 
-  {
- 	String filePath = null;
- 	String filePathLinux;
-	
-	try
+
+	public PropertiesProc ()
 	{
-		if (props == null)
+
+	}
+
+	/**
+	 *
+	 * @param propertiesFileName - relative to WebFileRoot
+	 */
+	public PropertiesProc (String propertiesFileName)
+	{
+		this.propertiesFileName = propertiesFileName;
+	}
+
+	/**
+	 *
+	 * @param key - name of property key
+	 * @return String - property value
+	 */
+	public String readProperty
+	(String key)
+	{
+
+		try
 		{
-			java.io.FileInputStream is = null;
-			if (Util.getWebRoot() != null) 
+			if (props == null)
 			{
-				filePath = 
-				    (Util.getWebRoot() + "/" + propertiesFileName);		
+				loadPropsViaStream();
 			}
-			
-			is = new java.io.FileInputStream(filePath);
-			
-			props = new Properties();
+			return props.getProperty(key);
+		}
+		catch (Exception e)
+		{
+			System.out.println("Could NOT read properties file: " + propertiesFileName);
+			System.out.println(e.getMessage());
+			return null;
+		}
+	}
+
+	private void loadPropsViaStream() throws IOException {
+		props = new Properties();
+
+		String filePath = null;
+		java.io.InputStream is = PropertiesProc.class.getResourceAsStream("/" + propertiesFileName);
+		if (is != null) {
 			props.load(is);
 		}
-		return props.getProperty(key);
+		else {
+			throw new IOException("Failed to create stream for " + propertiesFileName);
+		}
+
 	}
-	catch (Exception e)
-	{
-		System.out.println("Could NOT read properties file: " + filePath);
-		System.out.println(e.getMessage());
-		return null;
-	}	
-  }
 
+	@SuppressWarnings("unused")
+	private void loadPropsViaFile() throws IOException {
+		String filePath = null;
+		java.io.FileInputStream is = null;
+		if (Util.getWebRoot() != null)
+		{
+			filePath =
+					(Util.getWebRoot() + "/" + propertiesFileName);
+		}
 
+		is = new java.io.FileInputStream(filePath);
+
+		props = new Properties();
+		props.load(is);
+
+	}
 }
 

@@ -10,7 +10,7 @@
 	<servlet>
                 <servlet-name>Dogs</servlet-name>
                 <display-name>Dogs</display-name>
-                <jsp-file>/Dogs.jsp</jsp-file>
+                <jsp-file>/jsp/Dogs.jsp</jsp-file>
     </servlet>
 	<servlet-mapping>
 		<servlet-name>Action</servlet-name>
@@ -30,12 +30,9 @@
 	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>Action</welcome-file>
-		<welcome-file>Dogs.jsp</welcome-file>
+		<welcome-file>jsp/Dogs.jsp</welcome-file>
 		<welcome-file>index.html</welcome-file>
 		<welcome-file>index.jsp</welcome-file>
-		<welcome-file>default.html</welcome-file>
-		<welcome-file>default.htm</welcome-file>
-		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
 
 </web-app>

@@ -1,17 +1,9 @@
-JDBC_DRIVER			sun.jdbc.odbc.JdbcOdbcDriver
-		
-DRIVERURL_PREFIX		jdbc:odbc:
-	
-HOST				
-	
-DBNAME				AnimalsDB
-	
-DB_DELIMITER			
-
-USERNAME			
-	
-PASSWORD			
-	
-INITIAL_CONNECTIONS	1
-
-MAX_CONNECTIONS		2
+JDBC_DRIVER			com.mysql.jdbc.Driver
+DRIVERURL_PREFIX		jdbc:mysql://
+HOST				localhost
+DB_DELIMITER			/
+DBNAME				WARL
+USERNAME			dogs
+PASSWORD			Balm3r_
+INITIAL_CONNECTIONS		2
+MAX_CONNECTIONS			4

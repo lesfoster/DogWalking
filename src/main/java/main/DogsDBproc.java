@@ -1,27 +1,15 @@
 package main;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.Timestamp;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.Hashtable;
-import java.util.Vector;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import servlet.Action;
-import time.CalCustom;
-import time.Duration;
-import util.StringProc;
-
 import db.DBAccess;
 import db.ExecuteResults;
 import db.QueryConfig;
+import util.StringProc;
+
+import java.io.BufferedReader;
+import java.sql.*;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.Vector;
 
 public class DogsDBproc
 	extends Thread
@@ -726,6 +714,7 @@ public class DogsDBproc
 	{
 		try
 		{
+		    // NOTE: as of 12/25/2018, this URL does not work.  Petango.com is NOT defunct, however. LLF
 			applyOrigWHSdataToDogsDB();
 			
 			Dogs dogs = updateDogsLocalWithDogsDB();
