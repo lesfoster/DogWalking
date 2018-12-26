@@ -15,9 +15,12 @@
 
 <% 		
 	Dog dog = (Dog) request.getAttribute("Dog");
+    if (dog == null) {
+        dog = new Dog();
+        request.setAttribute("Dog", dog);
+    }
 
-
-		out.println(dog.outputEditHTML());
+	out.println(dog.outputEditHTML());
 %>
 <P><P>
 
